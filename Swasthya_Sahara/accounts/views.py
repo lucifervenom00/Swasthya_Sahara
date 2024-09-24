@@ -27,4 +27,4 @@ class ProfileUpdateView(LoginRequiredMixin, UpdateView):
     template_name = 'account/User_update_view.html'
 
     def get_success_url(self):
-        return reverse('profile')
+        return reverse('user_profile')

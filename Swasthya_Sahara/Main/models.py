@@ -43,6 +43,7 @@ class JournalEntry(models.Model):
 class DoctorInfo(models.Model):
     image=models.ImageField(upload_to='images/doctors/',null=True,blank=True)
     name=models.CharField(max_length=100)
+    specialist=models.CharField(max_length=20,default='Psychiatric',null=False,blank=False)
     phone=models.CharField(max_length=10)
     email=models.EmailField(null=False,blank=False)
     address=models.TextField()

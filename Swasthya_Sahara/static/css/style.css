@@ -18,9 +18,10 @@
   font-family: ITC_Garamond;
   src: url("{% static 'font/ITC Garamond Std Light Narrow.otf' %}");
 }
- a {
+a {
    text-decoration: none;
  }
+
 .heading-font{
   font-family: "ITC_Garamond";
   font-weight: 400;
@@ -65,7 +66,7 @@
    color: var(--white);
    border: 1px solid var(--white);
  }
-
+ 
  .btn-hover {
    background-color: var(--primary-light);
    color: var(--default);
@@ -81,12 +82,16 @@
  }
 
  .on_scroll{
-  background-color: #163c3d;
+  background-color: var(--primary-light);
   color: white;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 12px 0;
 }
  .scrolled {
    background-color: var(--primary-light);
+   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 12px 0;
+  transition: all 1s ease-in;
  }
 .navbar-nav a{
   font-family:Lexend,  sans-serif ;

@@ -1,0 +1,25 @@
+{% extends "main/base_user.html"%}
+{% load static %}
+{% block content %}
+<div class="row">
+    {% for post in list %}
+    <div class="col-lg-4 mb-4">
+      <div class="card w-auto">
+        <img
+          src="{{post.image.url}}"
+          alt="" class="card-img-top img-fluid" />
+
+        <div class="card-body">
+          <h5 class="card-title">Name:{{post.name}}</h5>
+          <h5 class="card-title">Specialist:{{post.specialist}}</h5>
+          <p class="card-text">Age:{{post.age}}/{{post.gender}}</p> 
+          <p class="card-text">Email:{{post.email}}</p>
+          <p class="card-text">Contact no. :{{post.phone}}</p>
+          <p class="card-text">Address:{{post.address}}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+  {% endblock %}

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block content %}
+{% block body %}
 <header class="py-5 bg-light border-bottom mb-4">
     <div class="container">
         <div class="text-center my-5">
@@ -9,23 +9,26 @@
 </header>
 <!-- Page content-->
 <div class="container">
-    <div class="col">
+    <div class="row">
 
         <!-- Blog post-->
         {% for post in blogs %}
-        <div class="card mb-4">
-            <!-- Uncomment and ensure cover_img is a valid field -->
-            <!-- <a href="{% url 'blog_post' post.pk %}"><img class="card-img-top" src="{{ post.cover_img.url }}" alt="{{ post.title }}" /></a> -->
-            <div class="card-body">
-                <div class="small text-muted">{{ post.created_on|date:"F j, Y" }}</div> <!-- Display actual post date -->
-                <h2 class="card-title h4">{{ post.title }}</h2>
-                <a class="btn btn-primary" href="{% url 'blog_post' post.pk %}">Read more →</a>
+        <div class="col-lg-4 mb-4">
+            <div class="card" style="width: 18rem;">
+                <!-- Uncomment and ensure cover_img is a valid field -->
+                <img src="{{post.cover_img.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{post.title}}</h5>
+                    <p class="card-text">{{post.content|truncatewords:30|safe}}</p>
+                    <a href="{% url 'blog_post' post.pk %}" class="btn btn-outline-success btn-sm">Read More</a>
+                  </div>
             </div>
         </div>
-        {% empty %}
-            <p>No posts available.</p> <!-- Message if no posts are found -->
-        {% endfor %}
+    
+    {% empty %}
+    <p>No posts available.</p> <!-- Message if no posts are found -->
+    {% endfor %}
 
-    </div>
 </div>
-{% endblock content %}
+</div>
+{% endblock %}

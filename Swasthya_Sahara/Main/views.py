@@ -4,12 +4,13 @@ from django.shortcuts import render
 from django.shortcuts import render,redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.urls import reverse
-from .models import Blog,JournalEntry,Category
+from .models import Blog,JournalEntry,Category,DoctorInfo
 from django.views.generic import ListView, DetailView
 from .forms import JournalEntryForm
 # Create your views here.
 def home(request):
     blogs=Blog.objects.all()
+    posts = blogs[:3]
     return render(request,"home.html",{'blogs':blogs})
 
 def blog_home(request):
@@ -18,6 +19,7 @@ def blog_home(request):
 def blog_post(request,pk):
     post = get_object_or_404(Blog, pk=pk)
     categories=Category.objects.all()
+    
     context={
         'category':categories,
         'post':post
@@ -79,5 +81,9 @@ def delete_all_journal_entries(request):
 def journal_list(request):
     entries = JournalEntry.objects.filter(user=request.user).order_by('-date_created')
     return render(request, 'main/journal_list.html',{'entries': entries})
-    
+
+@login_required
+def doctors_list(request):
+    doctor_info=DoctorInfo.objects.all()
+    return render(request,'main/doctor_details.html',{'list':doctor_info})
 
