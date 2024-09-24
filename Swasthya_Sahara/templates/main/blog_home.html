@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block content %}
+<header class="py-5 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder">Welcome to Blog Home!</h1>
+        </div>
+    </div>
+</header>
+<!-- Page content-->
+<div class="container">
+    <div class="col">
+
+        <!-- Blog post-->
+        {% for post in blogs %}
+        <div class="card mb-4">
+            <!-- Uncomment and ensure cover_img is a valid field -->
+            <!-- <a href="{% url 'blog_post' post.pk %}"><img class="card-img-top" src="{{ post.cover_img.url }}" alt="{{ post.title }}" /></a> -->
+            <div class="card-body">
+                <div class="small text-muted">{{ post.created_on|date:"F j, Y" }}</div> <!-- Display actual post date -->
+                <h2 class="card-title h4">{{ post.title }}</h2>
+                <a class="btn btn-primary" href="{% url 'blog_post' post.pk %}">Read more →</a>
+            </div>
+        </div>
+        {% empty %}
+            <p>No posts available.</p> <!-- Message if no posts are found -->
+        {% endfor %}
+
+    </div>
+</div>
+{% endblock content %}

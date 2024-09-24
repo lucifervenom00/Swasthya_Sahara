@@ -1,0 +1,14 @@
+{% extends "main/base_user.html"%}
+{% load static %}
+{% block content %}
+
+<h1>Your Journal Entries</h1>
+<a href="{% url 'dashboard' %}">Add New Entry</a>
+<ul>
+    {% for entry in entries %}
+    <p>{{ entry.date_created }}</p>
+    <p>{{ entry.content}}</p>
+    <a href="{% url 'delete_journal' %}">Delete</a>
+    {% endfor %}
+</ul>
+{% endblock %}
