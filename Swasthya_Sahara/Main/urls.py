@@ -5,7 +5,7 @@ urlpatterns = [
     path('dashboard/',views.user,name="dashboard"),
     path('profile',views.user_profile,name="user_profile"),
     path('profile/doctors/',views.doctors_list,name="doctors_list"),
-    path('profile/update',views.update_profile,name="update_profile"),
+    
     path('dashboard/chat',views.chat,name="chat"),
     path('blogs',views.blog_home,name='blog-home'),
     path('blog/<int:pk>/',views.blog_post,name='blog_post'),
